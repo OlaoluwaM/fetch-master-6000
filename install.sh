@@ -40,6 +40,7 @@ fi
 # chmod +x fm6000 && printf '%b\n' "${BLUE}Making the script executable : ${GREEN}done"
 require_text="root required"
 ans="$1"
+echo "ans: $ans"
 
 if [ -x $install_path ]; then
     if [ $root = 0 ]; then
