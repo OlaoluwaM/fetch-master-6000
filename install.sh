@@ -39,6 +39,7 @@ fi
 if [ -f "fm6000" ] && [ -s "fm6000" ]; then
     chmod +x fm6000 && printf '%b\n' "${BLUE}Making the script executable : ${GREEN}done"
     require_text="root required"
+    ans="$1"
 
     if [ -x $install_path ]; then
         if [ $root = 0 ]; then
@@ -46,11 +47,11 @@ if [ -f "fm6000" ] && [ -s "fm6000" ]; then
           sudo=
         fi
         printf '%b' "${YELLOW}"
-        read -p "Move the script to $install_path [$require_text]? (y/N) " ans
+        [ -n "${ans+x}" ] && read -p "Move the script to $install_path [$require_text]? (y/N) " ans
     else
         install_path=/usr/local/bin
         printf '%b' "${YELLOW}"
-        read -p "Move the script to $install_path [$require_text]? (y/N)  " ans
+        [ -n "${ans+x}" ] && read -p "Move the script to $install_path [$require_text]? (y/N)  " ans
     fi
 
     if [ "${ans}" = "y" ]; then
