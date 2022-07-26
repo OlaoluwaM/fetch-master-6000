@@ -42,6 +42,8 @@ require_text="root required"
 ans="$1"
 echo "ans: $ans"
 
+[ -z "${ans+x}" ] && read -p "Move the script to $install_path [$require_text]? (y/N) " ans
+
 if [ -x $install_path ]; then
     if [ $root = 0 ]; then
         require_text="root not required"
@@ -49,7 +51,6 @@ if [ -x $install_path ]; then
     fi
 
     printf '%b' "${YELLOW}"
-    [ -z "${ans+x}" ] && read -p "Move the script to $install_path [$require_text]? (y/N) " ans
 else
     install_path=/usr/local/bin
     printf '%b' "${YELLOW}"
